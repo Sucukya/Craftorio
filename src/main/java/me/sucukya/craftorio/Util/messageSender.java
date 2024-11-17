@@ -1,5 +1,7 @@
 package me.sucukya.craftorio.Util;
 
+import org.bukkit.entity.Player;
+
 public class messageSender {
     public String version;
     public String info;
@@ -22,5 +24,9 @@ public class messageSender {
         System.out.println(info + " please report them here:");
         System.out.println(info + " https://discord.gg/taG8V6RjFk");
         System.out.println(info + " *-------------------------------------*");
+    }
+
+    public void sendHelpMessage(Player p){
+
     }
 }

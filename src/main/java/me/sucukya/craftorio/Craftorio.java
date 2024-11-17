@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Craftorio extends JavaPlugin {
     String version = "0.01.Pre-Alpha";
-    messageSender messages = new messageSender();
+    public static messageSender messages = new messageSender();
     public static Lists lists = new Lists();
 
     static Craftorio craftorio;
