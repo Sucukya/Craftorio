@@ -1,0 +1,7 @@
+name: Craftorio
+version: '0.01'
+main: me.sucukya.craftorio.Craftorio
+api-version: '1.21'
+load: STARTUP
+authors: [Sucukya]
+description: Factorio-like Factory for Minecraft
