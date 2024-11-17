@@ -2,12 +2,16 @@ package me.sucukya.craftorio;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Craftorio extends JavaPlugin {
+public class Craftorio extends JavaPlugin {
+    String version = "0.01.Pre-Alpha";
+    messageSender messages = new messageSender();
+
+
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-
+        messages.version = version;
+        messages.sendStartUp();
     }
 
     @Override
