@@ -5,3 +5,7 @@ api-version: '1.21'
 load: STARTUP
 authors: [Sucukya]
 description: Factorio-like Factory for Minecraft
+commands:
+  gm:
+    usage: /gm <1,2,3,0>
+    description: Better Game Mode command.
