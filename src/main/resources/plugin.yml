@@ -1,5 +1,5 @@
 name: Craftorio
-version: '0.01'
+version: '0.01-Pre Alpha'
 main: me.sucukya.craftorio.Craftorio
 api-version: '1.21'
 load: STARTUP
@@ -9,3 +9,7 @@ commands:
   gm:
     usage: /gm <1,2,3,0>
     description: Better Game Mode command.
+  craftorio:
+    usage: /craftorio <arg1> <arg2> <arg3> <arg4>
+    description: The main command for Craftorio.
+    aliases: cft

@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 public class messageSender {
     public String version;
     public String info;
+    public String prefix;
 
     public void sendStartUp(){
         System.out.println(info + " *-------------------------------------*");
