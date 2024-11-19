@@ -8,24 +8,45 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class CustomItem {
-    String name;
-    Material material;
-    int customModelData;
-    String itemID;
+    private String name;
+    private Material material;
+    private int customModelData;
+    private String itemID;
+    private Boolean isPlaceable;
+    private Boolean isSmeltable;
 
-    public CustomItem(String name, Material material, int customModelData, String itemID) {
+    public CustomItem(String name, Material material, int customModelData, String itemID, Boolean isPlaceable) {
         this.name = name;
         this.material = material;
         this.customModelData = customModelData;
         this.itemID = itemID;
+        this.isPlaceable = isPlaceable;
 
         System.out.println("Initializing Item: " + name);
-        Craftorio.itemManager.itemMap.put(itemID, this);
-        Craftorio.itemManager.itemList.add(this);
+        Craftorio.itemManager.addToMap(itemID,this);
+        Craftorio.itemManager.addtoList(this);
     }
 
     public ItemStack buildItem() {
         ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setItemName(name);
+        meta.setCustomModelData(customModelData);
+        item.setItemMeta(meta);
+
+        NBTItem nbtItem = new NBTItem(item);
+        NBTCompound mainCompound = nbtItem.addCompound("cft");
+        mainCompound.setString("id", itemID);
+
+        return nbtItem.getItem();
+    }
+
+    public ItemStack buildStackItems(int amount) {
+        ItemStack item = new ItemStack(material);
+        if(amount > 64) {
+            amount = 64;
+        }
+        item.setAmount(amount);
         ItemMeta meta = item.getItemMeta();
         meta.setItemName(name);
         meta.setCustomModelData(customModelData);
@@ -54,17 +75,28 @@ public class CustomItem {
         return itemID;
     }
 
+    public Boolean getPlaceable(){
+        return isPlaceable;
+    }
+
+    public Boolean getSmeltable(){
+        return isSmeltable;
+    }
+
     public void setName(String newName) {
-        name = newName;
+        this.name = newName;
     }
     public void setMaterial(Material newMaterial) {
-        material = newMaterial;
+        this.material = newMaterial;
     }
     public void setCustomModelData(int newCustomModelData) {
-        customModelData = newCustomModelData;
+        this.customModelData = newCustomModelData;
     }
     public void setItemID(String newItemID) {
-        itemID = newItemID;
+        this.itemID = newItemID;
+    }
+    public void setSmeltable(Boolean isSmeltable) {
+        this.isSmeltable = isSmeltable;
     }
 
 }

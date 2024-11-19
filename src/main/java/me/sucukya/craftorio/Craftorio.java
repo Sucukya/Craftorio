@@ -4,9 +4,8 @@ package me.sucukya.craftorio;
 import de.tr7zw.changeme.nbtapi.NBT;
 import me.sucukya.craftorio.Commands.craftorio;
 import me.sucukya.craftorio.Commands.gameMode;
-import me.sucukya.craftorio.Events.JoinListener;
-import me.sucukya.craftorio.Events.LeaveListener;
-import me.sucukya.craftorio.Items.Items;
+import me.sucukya.craftorio.Events.Events;
+import me.sucukya.craftorio.Items.ItemManager;
 import me.sucukya.craftorio.TabComplete.craftorioComplete;
 import me.sucukya.craftorio.Util.Lists;
 import me.sucukya.craftorio.Util.messageSender;
@@ -18,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Craftorio extends JavaPlugin {
     String version = "0.01.Pre-Alpha";
     public static messageSender messages = new messageSender();
-    public static Items itemManager = new Items();
+    public static ItemManager itemManager = new ItemManager();
     public static Lists lists = new Lists();
 
     static Craftorio craftorio;
@@ -62,7 +61,6 @@ public class Craftorio extends JavaPlugin {
     public void registerEvents(){
         PluginManager pm = Bukkit.getPluginManager();
 
-        pm.registerEvents(new JoinListener(), craftorio);
-        pm.registerEvents(new LeaveListener(), craftorio);
+        pm.registerEvents(new Events(), this);
     }
 }

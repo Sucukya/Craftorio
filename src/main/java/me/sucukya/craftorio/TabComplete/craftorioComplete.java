@@ -28,7 +28,7 @@ public class craftorioComplete implements TabCompleter {
                 }
             }
             if(args.length == 3) {
-                for(CustomItem item : Craftorio.itemManager.itemList){
+                for(CustomItem item : Craftorio.itemManager.getItemList()){
                     list.add(item.getItemID());
                 }
             }
